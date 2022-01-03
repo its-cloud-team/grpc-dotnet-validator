@@ -1,20 +1,23 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
     <Import Project="../../build/version.props" />
     <PropertyGroup>
-        <PackageId>GrpcExtensions.AspNetCore.Validation</PackageId>
-        <Authors>Jinseoung Lee</Authors>
+        <PackageId>Abc.GrpcExtensions.AspNetCore.Validation</PackageId>
+        <Authors>Jinseoung Lee, its-cloud-team</Authors>
         <PackageTags>grpc;dotnet;validator;validation;request-validation;aspnetcore</PackageTags>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-        <PackageProjectUrl>https://github.com/enif-lee/grpc-dotnet-validator</PackageProjectUrl>
-        <PackageLicenseUrl>https://github.com/enif-lee/grpc-dotnet-validator/blob/master/LICENSE</PackageLicenseUrl>
-        <TargetFramework>netcoreapp3.1</TargetFramework>
+        <PackageProjectUrl>https://github.com/its-cloud-team/grpc-dotnet-validator</PackageProjectUrl>
+        <PackageLicenseUrl>https://github.com/its-cloud-team/grpc-dotnet-validator/blob/master/LICENSE</PackageLicenseUrl>
+        <TargetFrameworks>netcoreapp3.1;net6.0</TargetFrameworks>
         <DocumentationFile>bin\Debug\Grpc.AspNetCore.FluentValidation.xml</DocumentationFile>
         <SymbolPackageFormat>snupkg</SymbolPackageFormat>
         <IncludeSymbols>true</IncludeSymbols>
         <PublishRepositoryUrl>true</PublishRepositoryUrl>
-        <Repository>https://github.com/enif-lee/grpc-dotnet-validator</Repository>
+        <Repository>https://github.com/its-cloud-team/grpc-dotnet-validator</Repository>
     </PropertyGroup>
-
+    <PropertyGroup Condition="$(TargetFramework)=='net6.0'">
+        <ImplictUsings>enable</ImplicitUsings>
+        <Nullable>warning</Nullable>
+    </PropertyGroup>
     <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
       <DocumentationFile>bin\Release\Grpc.AspNetCore.FluentValidation.xml</DocumentationFile>
     </PropertyGroup>
@@ -24,9 +27,14 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="FluentValidation" Version="8.5.1" />
-        <PackageReference Include="Grpc.AspNetCore" Version="2.25.0" />
         <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All" />
     </ItemGroup>
-
+    <ItemGroup Condition="$(TargetFramework)=='netcoreapp3.1'">
+        <PackageReference Include="FluentValidation" Version="8.5.1" />
+        <PackageReference Include="Grpc.AspNetCore" Version="2.25.0" />
+    </ItemGroup>
+    <ItemGroup Condition="$(TargetFramework)=='net6.0'">
+        <PackageReference Include="FluentValidation" Version="10.3.6" />
+        <PackageReference Include="Grpc.AspNetCore" Version="2.42.0-pre1" />
+    </ItemGroup>
 </Project>
