@@ -15,8 +15,8 @@
         <Repository>https://github.com/its-cloud-team/grpc-dotnet-validator</Repository>
     </PropertyGroup>
     <PropertyGroup Condition="$(TargetFramework)=='net6.0'">
-        <ImplictUsings>enable</ImplicitUsings>
-        <Nullable>warning</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>warnings</Nullable>
     </PropertyGroup>
     <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
       <DocumentationFile>bin\Release\Grpc.AspNetCore.FluentValidation.xml</DocumentationFile>
